@@ -1,0 +1,40 @@
+artifacts:
+  github:
+    accounts:
+    - name: github-artifact
+    enabled: true
+  gitlab:
+    enabled: false
+  gitrepo:
+    enabled: false
+  helm:
+    enabled: false
+  http:
+    enabled: false
+  maven:
+    enabled: false
+  s3:
+    enabled: false
+dockerRegistry:
+  accounts:
+  - address: https://index.docker.io
+    cacheIntervalSeconds: 30
+    cacheThreads: 1
+    clientTimeoutMillis: 60000
+    email: fake.email@spinnaker.io
+    insecureRegistry: false
+    name: public-docker-account
+    paginateSize: 100
+    permissions: {}
+    sortTagsByDate: false
+    trackDigests: true
+  enabled: true
+  primaryAccount: public-docker-account
+kubernetes:
+  accounts:
+  - cacheThreads: 1
+    name: minikube
+    onlySpinnakerManaged: false
+    permissions: {}
+  enabled: true
+  primaryAccount: minikube

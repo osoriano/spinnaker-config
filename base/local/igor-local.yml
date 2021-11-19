@@ -1,0 +1,3 @@
+github:
+  baseUrl: https://api.github.com
+  commitDisplayLength: 8

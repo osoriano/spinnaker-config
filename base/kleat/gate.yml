@@ -1,0 +1,13 @@
+google:
+  iap:
+    enabled: false
+ldap:
+  enabled: false
+saml:
+  enabled: false
+  userAttributeMapping: {}
+server:
+  ssl:
+    enabled: false
+x509:
+  enabled: false

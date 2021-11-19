@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - env:
+        - name: MASTER
+          value: "true"
+        image: redis:5.0.4
+        name: redis
+        ports:
+        - name: traffic-port
+          containerPort: 6379
+          protocol: TCP
+        command:
+          - redis-server
+          - "/redis-master/redis.conf"
+        volumeMounts:
+        - mountPath: /redis-master-data
+          name: data
+        - mountPath: /redis-master
+          name: config
+      volumes:
+        - name: data
+          emptyDir: {}
+        - name: config
+          configMap:
+            name: redis-config
+            items:
+            - key: redis-config
+              path: redis.conf

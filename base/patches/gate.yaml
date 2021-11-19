@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gate
+spec:
+  template:
+    spec:
+      containers:
+      - name: gate
+        readinessProbe:
+          httpGet:
+            scheme: HTTP
+            port: traffic-port
+            path: /health

@@ -1,0 +1,10 @@
+datadog:
+  enabled: false
+monitor:
+  period: 30
+newrelic:
+  enabled: false
+prometheus:
+  enabled: false
+stackdriver:
+  enabled: false

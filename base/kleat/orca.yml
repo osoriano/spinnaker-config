@@ -1,0 +1,9 @@
+services:
+  keel:
+    enabled: true
+tasks:
+  executionWindow:
+    timezone: America/Los_Angeles
+webhook:
+  trust:
+    enabled: false

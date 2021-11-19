@@ -1,0 +1,7 @@
+auth:
+  enabled: false
+  groupMembership:
+    file: {}
+    github: {}
+    google: {}
+    ldap: {}

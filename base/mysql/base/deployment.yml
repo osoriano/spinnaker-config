@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - image: mysql:5.7
+        name: mysql
+        args:
+          - "--ignore-db-dir=lost+found"
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: root
+        - name: MYSQL_DATABASE
+          value: keel
+        - name: MYSQL_USER
+          value: keel
+        - name: MYSQL_PASSWORD
+          value: mysecretpassword
+        ports:
+        - name: tcp-mysql
+          containerPort: 3306
+          protocol: TCP
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        emptyDir: {}

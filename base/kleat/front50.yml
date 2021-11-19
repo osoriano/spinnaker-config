@@ -1,0 +1,11 @@
+spinnaker:
+  delivery:
+    enabled: true
+  s3:
+    accessKeyId: AKIAIOSFODNN7EXAMPLE
+    bucket: spinnaker-bucket
+    enabled: true
+    endpoint: http://minio:9000
+    pathStyleAccess: true
+    rootFolder: front50
+    secretAccessKey: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY

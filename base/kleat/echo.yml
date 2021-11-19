@@ -1,0 +1,41 @@
+artifacts:
+  github:
+    accounts:
+    - name: github-artifact
+    enabled: true
+  gitlab:
+    enabled: false
+  gitrepo:
+    enabled: false
+  helm:
+    enabled: false
+  http:
+    enabled: false
+  maven:
+    enabled: false
+  s3:
+    enabled: false
+gcb:
+  enabled: false
+githubStatus:
+  enabled: false
+pubsub:
+  enabled: false
+  google:
+    enabled: false
+scheduler:
+  cron:
+    timezone: America/Los_Angeles
+services:
+  keel:
+    enabled: true
+slack:
+  enabled: false
+stats:
+  deploymentMethod:
+    type: kleat
+    version: unknown
+  enabled: true
+  endpoint: https://stats.spinnaker.io
+  instanceId: 01FMFQTRBDVH32ND47C261E3D0
+  spinnakerVersion: 1.26.6

@@ -1,0 +1,204 @@
+name: default
+version: 1.26.6
+# Configure infra providers to deploy to
+providers:
+  kubernetes:
+    enabled: true
+    accounts:
+    - name: minikube
+      requiredGroupMembership: []
+      permissions: {}
+      dockerRegistries: []
+      providerVersion: V2
+      configureImagePullSecrets: true
+      cacheThreads: 1
+      namespaces: []
+      omitNamespaces: []
+      kinds: []
+      omitKinds: []
+      customResources: []
+      cachingPolicies: []
+      rawResourcesEndpointConfig:
+        kindExpressions: []
+        omitKindExpressions: []
+      oAuthScopes: []
+      onlySpinnakerManaged: false
+    primaryAccount: minikube
+  # This acts as a source of images not deploying Docker images
+  dockerRegistry:
+    enabled: true
+    accounts:
+    - address: https://index.docker.io
+      cacheIntervalSeconds: 30
+      cacheThreads: 1
+      clientTimeoutMillis: 60000
+      email: fake.email@spinnaker.io
+      insecureRegistry: false
+      name: public-docker-account
+      paginateSize: 100
+      permissions: {}
+      repositories: []
+      sortTagsByDate: false
+      # May be able to disable again after keel k8s plugin upgrade
+      # trackDigests: false
+      trackDigests: true
+    primaryAccount: public-docker-account
+# Configure external storage for application settings and pipelines
+persistentStorage:
+  s3:
+    enabled: true
+    bucket: spinnaker-bucket
+    rootFolder: front50
+    pathStyleAccess: true
+    accessKeyId: AKIAIOSFODNN7EXAMPLE
+    secretAccessKey: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    endpoint: "http://minio:9000"
+    versioning: false
+  sql:
+    default:
+      jdbcUrl: jdbc:mysql://mysql/keel?useSSL=false
+      password: mysecretpassword
+      user: keel
+    enabled: true
+    migration:
+      jdbcUrl: jdbc:mysql://mysql/keel?useSSL=false
+      password: mysecretpassword
+      user: keel
+metricStores:
+  datadog:
+    enabled: false
+    tags: []
+  prometheus:
+    enabled: false
+    add_source_metalabels: true
+  stackdriver:
+    enabled: false
+  newrelic:
+    enabled: false
+    tags: []
+  period: 30
+notifications:
+  slack:
+    enabled: false
+  githubStatus:
+    enabled: false
+timezone: America/Los_Angeles
+ci:
+  jenkins:
+    enabled: false
+    masters: []
+  travis:
+    enabled: false
+    masters: []
+  wercker:
+    enabled: false
+    masters: []
+  concourse:
+    enabled: false
+    masters: []
+  gcb:
+    enabled: false
+    accounts: []
+  codebuild:
+    enabled: false
+    accounts: []
+repository:
+  artifactory:
+    enabled: false
+    searches: []
+  nexus:
+    enabled: false
+    searches: []
+security:
+  apiSecurity:
+    ssl:
+      enabled: false
+  uiSecurity:
+    ssl:
+      enabled: false
+  authn:
+    oauth2:
+      enabled: false
+      client: {}
+      resource: {}
+      userInfoMapping: {}
+    saml:
+      enabled: false
+      userAttributeMapping: {}
+    ldap:
+      enabled: false
+    x509:
+      enabled: false
+    iap:
+      enabled: false
+    enabled: false
+  authz:
+    groupMembership:
+      # From Halyard migration:
+      # This field should now be omitted? It's of type GroupMembership.RoleProviderType
+      # Must be one of FILE, GOOGLE, GITHUB, LDAP
+      # service: EXTERNAL
+      google: {}
+      github: {}
+      file: {}
+      ldap: {}
+    enabled: false
+artifacts:
+  github:
+    enabled: true
+    accounts:
+    - name: github-artifact
+  gitlab:
+    enabled: false
+    accounts: []
+  gitrepo:
+    enabled: false
+    accounts: []
+  http:
+    enabled: false
+    accounts: []
+  helm:
+    enabled: false
+    accounts: []
+  s3:
+    enabled: false
+    accounts: []
+  maven:
+    enabled: false
+    accounts: []
+  templates: []
+pubsub:
+  enabled: false
+  google:
+    enabled: false
+    pubsubType: GOOGLE
+    subscriptions: []
+    publishers: []
+canary:
+  enabled: false
+  serviceIntegrations: {}
+  reduxLoggerEnabled: true
+  defaultJudge: NetflixACAJudge-v1.0
+  stagesEnabled: true
+  templatesEnabled: true
+  showAllConfigsEnabled: true
+webhook:
+  trust:
+    enabled: false
+stats:
+  enabled: true
+  endpoint: https://stats.spinnaker.io
+  instanceId: 01FMFQTRBDVH32ND47C261E3D0
+  deploymentMethod: {}
+  connectionTimeoutMillis: 3000
+  readTimeoutMillis: 5000
+managedDelivery:
+  enabled: true
+  keel:
+    plugins:
+      ec2:
+        enabled: true
+      k8s:
+        enabled: true
+      deliveryConfig:
+        enabled: true

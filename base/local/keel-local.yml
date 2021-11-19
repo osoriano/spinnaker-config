@@ -1,0 +1,11 @@
+spinnaker:
+  extensibility:
+    plugins-root-path: /opt/keel/plugins
+    plugins:
+      aws.ManagedDeliveryK8sPlugin:
+        enabled: true
+        version: 0.0.11
+    repositories:
+      awsManagedDelvieryK8sPluginRepo:
+        id: awsManagedDelvieryK8sPluginRepo
+        url: https://raw.githubusercontent.com/nimakaviani/managed-delivery-k8s-plugin/master/plugins.json

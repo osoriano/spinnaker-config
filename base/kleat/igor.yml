@@ -1,0 +1,16 @@
+artifactory:
+  enabled: false
+codebuild:
+  enabled: false
+concourse:
+  enabled: false
+dockerRegistry:
+  enabled: true
+gcb:
+  enabled: false
+jenkins:
+  enabled: false
+travis:
+  enabled: false
+wercker:
+  enabled: false

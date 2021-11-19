@@ -1,0 +1,3 @@
+services:
+  keel:
+    enabled: true
